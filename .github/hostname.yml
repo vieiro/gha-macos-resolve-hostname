@@ -18,7 +18,6 @@ jobs:
     runs-on: macos-13
     steps:
     - shell: bash
-          if: startsWith(runner.os, 'macos')
           run: |
             cat /etc/hosts
             # echo -e "127.0.0.1 $(hostname -f) $(hostname -s)" | sudo tee -a /etc/hosts
