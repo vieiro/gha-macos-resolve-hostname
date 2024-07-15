@@ -1,0 +1,27 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Check resolve hostname
+
+on:
+  push:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  test-hostname:
+    runs-on: macos-13
+    steps:
+    - shell: bash
+          if: startsWith(runner.os, 'macos')
+          run: |
+            cat /etc/hosts
+            # echo -e "127.0.0.1 $(hostname -f) $(hostname -s)" | sudo tee -a /etc/hosts
+            # dscacheutil -q host -a name $(hostname -f)
+
+
