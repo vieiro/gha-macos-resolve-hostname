@@ -1,0 +1,64 @@
+name: Check hostname and localhost resolution
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  macos-resolve-hostname:
+    runs-on: macos-13
+    steps:
+    - uses: actions/checkout@v4
+    - name: "Compile and run"
+      run: |
+        echo "Compiling..."
+        cc main.c -o main
+        echo "Running..."
+        ./main $(hostname -f)
+  macos-resolve-hostname-modifying-etc-hosts:
+    runs-on: macos-13
+    steps:
+    - uses: actions/checkout@v4
+    - name: "Update /etc/hosts"
+      run: |
+        echo -e "127.0.01     $(hostname -f) $(hostname -s)" | sudo tee -a /etc/hosts
+        echo -e "" | sudo tee -a /etc/hosts
+    - name: "Compile and run"
+      run: |
+        echo "Compiling..."
+        cc main.c -o main
+        echo "Running..."
+        ./main $(hostname -f)
+  macos-resolve-localhost:
+    runs-on: macos-13
+    steps:
+    - uses: actions/checkout@v4
+    - name: "Compile and run"
+      run: |
+        echo "Compiling..."
+        cc main.c -o main
+        echo "Running..."
+        ./main localhost
+  ubuntu-resolve-hostname:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: "Compile and run"
+      run: |
+        echo "Compiling..."
+        cc main.c -o main
+        echo "Running..."
+        ./main $(hostname -f)
+  ubuntu-resolve-localhost:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: "Compile and run"
+      run: |
+        echo "Compiling..."
+        cc main.c -o main
+        echo "Running..."
+        ./main localhost
+
