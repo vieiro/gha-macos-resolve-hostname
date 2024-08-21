@@ -13,3 +13,6 @@ This repo includes a simple GHA workflow that runs `getaddrinfo` on different pl
 One of the jobs updates the `/etc/hosts` file, allowing `getaddrinfo` to properly resolve `$(hostname -f)`.
 
 
+## Update 2024-08-21
+
+Github claims that this is now solved. Let's try by adding a new commit to master and running GHA actions again...
