@@ -2,9 +2,11 @@
 
 This is a reproducer for GHA issue https://github.com/actions/runner-images/issues/8649
 
-The function `getaddrinfo` is unable to resolve the result of `$(hostname -f)`.
+The function `getaddrinfo` was unable to resolve the result of `$(hostname -f)`. Note that this is usually a [`.local` address](https://en.wikipedia.org/wiki/.local) (such as `Mac-1721125139157.local`).
 
-Note that this is usually a [`.local` address](https://en.wikipedia.org/wiki/.local) (such as `Mac-1721125139157.local`).
+The **issue was solved in august 2024 and new deployed `macos-13` images in github do not have this problem now**.
+
+The repository is being kept for future reference.
 
 ## Actions
 
