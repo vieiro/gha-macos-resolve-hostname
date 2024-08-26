@@ -16,3 +16,7 @@ One of the jobs updates the `/etc/hosts` file, allowing `getaddrinfo` to properl
 ## Update 2024-08-21
 
 Github claims that this is now solved. Let's try by adding a new commit to master and running GHA actions again...
+
+## Update 2024-08-26
+
+It seems the new Github builder images with a fix have been now deployed. Let's test them with a new commit & build.
